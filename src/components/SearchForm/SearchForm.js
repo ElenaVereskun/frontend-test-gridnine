@@ -54,8 +54,6 @@ function SearchForm({ onSearch,
                         </div>
                     </div>
                 </div>
-
-
                 <div className='search-form__airlines'>
                     <h2 className='search-form__airlines-title'>Авиакомпании</h2>
                     <div className='search-form__airlines-container'>

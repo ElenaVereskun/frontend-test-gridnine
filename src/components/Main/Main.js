@@ -4,9 +4,9 @@ import CardList from '../CardList/CardList';
 
 function Main() {
     return (
-        <main>
+        <main className='main__container'>
             <SearchForm />
-            {/* <CardList /> */}
+            <CardList />
         </main>
     )
 }

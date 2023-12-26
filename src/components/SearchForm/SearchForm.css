@@ -1,37 +1,59 @@
 .search-form {
-    font-family: Inter, Arial, sans-serif;
-    font-style: normal;
     font-weight: 400;
     margin: 50px 50px;
     max-width: 1280px;
+    color: gray;
 }
 
 .search-form__sort-title {
-    font-style: normal;
+    font-size: 16px;
 }
-.search-form__sort-checkbox{
+
+.search-form__sort-checkbox {
     border-radius: 50%;
     vertical-align: middle;
-    border: 1px solid black;
+    border: 2px solid red;
     outline: none;
     cursor: pointer;
 }
-.search-form__prise-container{
+
+.search-form__prise-container {
     display: flex;
     flex-direction: column;
-    
+
 }
-.search-form__prise-min{
+
+.search-form__prise-min {
     width: 230px;
     height: 20px;
-    margin-left: 5px
+    margin-left: 5px;
 }
-.search-form__prise-max{
+
+.search-form__prise-max {
     width: 230px;
     height: 20px;
-    margin-left: 5px
+    margin-left: 5px;
 }
-.search-form__prise-item{
+
+.search-form__prise-item {
     display: flex;
     align-items: center;
+}
+
+.search-form__filter-title {
+    font-size: 16px;
+}
+
+.search-form__prise-title {
+    font-size: 16px;
+}
+
+.search-form__airlines-title {
+    font-size: 16px;
+}
+.search-form__filter-checkbox{
+    cursor: pointer;
+}
+.search-form__airlines-checkbox{
+    cursor: pointer;
 }

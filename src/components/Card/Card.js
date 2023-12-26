@@ -1,58 +1,49 @@
 import { React } from 'react';
-function Card({ onMovieSave, onMovieDelete, movie, isLiked, isSaved }) {
-    const {
-        country,
-        description,
-        director,
-        duration,
-        image,
-        id,
-        nameEN,
-        nameRU,
-        thumbnail,
-        trailerLink,
-        year,
-    } = movie;
+import Segment from '../Segment/Segment';
 
-    const minutes = duration % 60;
-    const hours = Math.floor(duration / 60);
 
-    function handleSavedClick() {
-        onMovieSave(movie);
-    }
-    function handleDeleteMovie() {
-        onMovieDelete(movie);
-    }
-    const savedButtonClassName = (
-        `movies-card__button-save ${isLiked && 'movies-card__button-save_active'}`
-    )
-
+function Card({ flight }) {
     return (
-        <li className='movies-card'>
-            <div className='movies-card__heading'>
-                <h2 className='movies-card__title'>{nameRU}</h2>
-                <p className='movies-card__time'>{hours}ч{minutes}мин</p>
+        <li className='card'>
+            <div className='card__heading'>
+                <img className='card__logo' src='#' alt='логотип' />
+                <div>
+                    <p className='card__prise'>21049 ₽</p>
+                    <p className='card__prise-caption'>Стоимость для одного взрослого пассажира</p>
+                </div>
             </div>
-            {isSaved
-                ? <a href={trailerLink} className='movies-card__link'
-                    target="_blank" rel="noopener noreferrer">
-                    <img src={image} className='movies-card__item'
-                        alt={nameRU} />
-                </a>
-                : <a href={trailerLink} className='movies-card__link'
-                    target="_blank" rel="noopener noreferrer">
-                    <img src={`https://api.nomoreparties.co${image.url}`}
-                        className='movies-card__item'
-                        alt={nameRU} />
-                </a>
-            }
-            {isSaved
-                ? <button className='movies-card__button-remove'
-                    onClick={handleDeleteMovie}></button>
-                : <button className={savedButtonClassName}
-                    onClick={handleSavedClick}>
-                </button>
-            }
+            <Segment />
+            <Segment />
+            <button className='card__button'>ВЫБРАТЬ</button>
+
+            {/* <div className='card__segment'>
+                <div className='card__flight'>
+                    <p className='card__capital-departure'>Moscow,</p>
+                    <p className='card__airport-departure'>Sheremetevo</p>
+                    <p className='card__airport-departure-uid'>(SVO)&rarr;</p>
+                    <p className='card__capital-arrival'>London,</p>
+                    <p className='card__airport-arrival'>Hitrow</p>
+                    <p className='card__airport-arrival-uid'>(LHR)</p>
+                </div>
+                <div className='card__timing'>
+                    <div className='card__timing-item'>
+                        <p className='card__time'>20;40</p>
+                        <p className='card__data'>19 out cp</p>
+                    </div>
+
+                    <div className='card__duration'>
+                        <img className='card__duration-img' src={Clock} alt='Часы' />
+                        <p className='card__'>14ч 45мин</p>
+                    </div>
+                    <div className='card__timing-item'>
+                        <p className='card__data'>19 out cp</p>
+                        <p className='card__time'>09/25</p>
+                    </div>
+
+                </div>
+                <p className=''>1 пересадка</p>
+                <p className=''>Рейс выполняет: LOT Polish Airlines</p>
+            </div> */}
         </li>
     )
 }

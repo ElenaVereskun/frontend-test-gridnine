@@ -1,0 +1,62 @@
+.segment {
+    padding-left: 20px;
+    padding-right: 20px;
+    border-bottom: 3px solid rgb(0, 140, 255);
+}
+
+.segment__flight {
+    display: flex;
+    font-size: 22px;
+    border-bottom: 1px solid rgb(221, 218, 218);
+}
+
+.segment__airport-departure-uid {
+    color: rgb(0, 140, 255);
+}
+
+.segment__airport-arrival-uid {
+    color: rgb(0, 140, 255);
+}
+
+.segment__timing {
+    display: flex;
+    font-size: 22px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.segment__timing-item {
+    display: flex;
+    align-items: center;
+}
+
+.segment__data {
+    color: rgb(0, 140, 255);
+    font-size: 18px;
+}
+
+.segment__duration {
+    display: flex;
+    align-items: center;
+}
+
+.segment__duration-img {
+    height: 30px;
+    width: 30px;
+}
+/* .segment__stops{
+    display: flex;
+} */
+.segment__stop {
+    position: relative;
+    z-index: 1;
+    margin-bottom: -17px;
+    text-align: center;
+    color: rgb(253, 172, 66);
+    background-color: white;
+    width: 110px;
+}
+
+.segment__line {
+    z-index: 0;
+}

@@ -1,10 +1,6 @@
-.main {
-    background-color: white;
-}
-.main__container{    
-    margin: 0 120px;
+.main__container{
     font-family: Inter,Arial,sans-serif;
     font-style: normal;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 30% 70%;
 }
