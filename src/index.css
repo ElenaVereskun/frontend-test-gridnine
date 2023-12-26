@@ -1,0 +1,8 @@
+@import url(vendor/normalize.css);
+@import url(fonts/fonts.css);
+@import url(components/Main/Main.css);
+@import url(components/Movies/Movies.css);
+@import url(components/SearchForm/SearchForm.css);
+@import url(components/FilterCheckbox/FilterCheckbox.css);
+@import url(components/CardList/CardList.css);
+@import url(components/Card/Card.css);

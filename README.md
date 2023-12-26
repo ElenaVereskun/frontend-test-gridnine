@@ -1,1 +1,1 @@
-# frontend-test-gridnine
+# Тестовое задание для компании Gridnine

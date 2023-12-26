@@ -1,0 +1,10 @@
+.main {
+    background-color: white;
+}
+.main__container{    
+    margin: 0 120px;
+    font-family: Inter,Arial,sans-serif;
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+}
