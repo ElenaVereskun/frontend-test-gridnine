@@ -1,53 +1,53 @@
-.segment {
+.flight {
     padding-left: 20px;
     padding-right: 20px;
     border-bottom: 3px solid rgb(0, 140, 255);
 }
 
-.segment__flight {
+.flight__heading {
     display: flex;
     font-size: 22px;
     border-bottom: 1px solid rgb(221, 218, 218);
 }
 
-.segment__airport-departure-uid {
+.flight__airport-departure-uid {
     color: rgb(0, 140, 255);
 }
 
-.segment__airport-arrival-uid {
+.flight__airport-arrival-uid {
     color: rgb(0, 140, 255);
 }
 
-.segment__timing {
+.flight__timing {
     display: flex;
     font-size: 22px;
     align-items: center;
     justify-content: space-between;
 }
 
-.segment__timing-item {
+.flight__timing-item {
     display: flex;
     align-items: center;
 }
 
-.segment__data {
+.flight__data {
     color: rgb(0, 140, 255);
     font-size: 18px;
 }
 
-.segment__duration {
+.flight__duration {
     display: flex;
     align-items: center;
 }
 
-.segment__duration-img {
+.flight__duration-img {
     height: 30px;
     width: 30px;
 }
 /* .segment__stops{
     display: flex;
 } */
-.segment__stop {
+.flight__stop {
     position: relative;
     z-index: 1;
     margin-bottom: -17px;
@@ -57,6 +57,6 @@
     width: 110px;
 }
 
-.segment__line {
+.flight__line {
     z-index: 0;
 }

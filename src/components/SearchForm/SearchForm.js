@@ -1,16 +1,11 @@
 import { React } from 'react';
-import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 
-function SearchForm({ onSearch,
-    searchValue,
-    handleChangeSearch,
-    isShort,
-    handleChek,
-    onClickCheckbox }) {
+function SearchForm({ minPrice, airlines }) {
+
 
     function handleSubmit(e) {
         e.preventDefault();
-        onSearch();
+        /*  onSearch(); */
     };
     return (
         <section>
@@ -58,11 +53,11 @@ function SearchForm({ onSearch,
                     <h2 className='search-form__airlines-title'>Авиакомпании</h2>
                     <div className='search-form__airlines-container'>
                         <input className='search-form__airlines-checkbox' type="checkbox" />
-                        <label className='search-form__airlines-text'> - Название и цена</label>
+                        <label className='search-form__airlines-text'> - {airlines.flight.carrier.caption} от {minPrice} p.</label>
                     </div>
                     <div className='search-form__airlines-container'>
                         <input className='search-form__airlines-checkbox' type="checkbox" />
-                        <label className='search-form__airlines-text'> - Название и цена</label>
+                        <label className='search-form__airlines-text'> - {airlines.flight.carrier.caption} от {minPrice} p.</label>
                     </div>
                 </div>
             </form>

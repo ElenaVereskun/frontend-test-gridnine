@@ -57,3 +57,6 @@
 .search-form__airlines-checkbox{
     cursor: pointer;
 }
+.search-form__airlines-container{
+    white-space: nowrap;
+}
