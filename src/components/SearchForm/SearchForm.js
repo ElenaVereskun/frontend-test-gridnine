@@ -1,11 +1,18 @@
 import { React } from 'react';
 
-function SearchForm({ minPrice, airlines }) {
+function SearchForm({ minPrice,
+    airlines,
+    checkedPriceUp,
+    checkedPriceDown,
+    checkedFilterByDuration,
+    filterFlightsByPrice,
+    filterFlightsByDuration
+}) {
 
 
     function handleSubmit(e) {
         e.preventDefault();
-        /*  onSearch(); */
+        filterFlightsByPrice();
     };
     return (
         <section>
@@ -13,15 +20,25 @@ function SearchForm({ minPrice, airlines }) {
                 <div className='search-form__sort'>
                     <h2 className='search-form__sort-title'>Сортировать</h2>
                     <div className='search-form__sort-container'>
-                        <input className='search-form__sort-checkbox' type="checkbox" />
+                        <input className='search-form__sort-checkbox'
+                            onChange={checkedPriceUp}
+                            onClick={filterFlightsByPrice}
+                            /* checked={checkedPriceUp} */
+                            type="checkbox" />
                         <label className='search-form__sort-text'> - по возрастанию цены</label>
                     </div>
                     <div className='search-form__sort-container'>
-                        <input className='search-form__sort-checkbox' type="checkbox" />
+                        <input className='search-form__sort-checkbox'
+                            onChange={checkedPriceDown}
+                            onClick={filterFlightsByPrice}
+                            type="checkbox" />
                         <label className='search-form__sort-text'> - по убыванию цены</label>
                     </div>
                     <div className='search-form__sort-container'>
-                        <input className='search-form__sort-checkbox' type="checkbox" />
+                        <input className='search-form__sort-checkbox'
+                            onChange={checkedFilterByDuration}
+                            onClick={filterFlightsByDuration}
+                            type="checkbox" />
                         <label className='search-form__sort-text'> - по времени в пути</label>
                     </div>
                 </div>
