@@ -1,30 +1,59 @@
 import { React } from 'react';
 import Clock from '../../images/clock.svg'
 
-function Segment() {
+function Segment({ departureCity,
+    departureAirport,
+    departureAirportUid,
+    arrivalCity,
+    arrivalAirport,
+    arrivalAirportUid,
+    departureDate,
+    duration,
+    arrivalDate
+}) {
+
+    const minutes = duration % 60;
+    const hours = Math.floor(duration / 60);
+
+    //Перевод даты в нужный формат
+    const stringDepartureDate = new String(departureDate);
+    const stringArrivalDate = new String(arrivalDate);
+
+    const departureTime = stringDepartureDate.substring(11, 16);//Время вылета
+    const arrivalTime = stringArrivalDate.substring(11, 16);//Время прилета
+
+    console.log(departureTime);
+    console.log(arrivalTime);
+
+
+
+
+
+    /* console.log(str.toLocaleDateString(undefined, { weekday: 'long' })); */
+
     return (
         <div className='segment'>
             <div className='segment__flight'>
-                <p className='segment__capital-departure'>Moscow,</p>
-                <p className='segment__airport-departure'>Sheremetevo</p>
-                <p className='segment__airport-departure-uid'>(SVO)&rarr;</p>
-                <p className='segment__capital-arrival'>London,</p>
-                <p className='segment__airport-arrival'>Hitrow</p>
-                <p className='segment__airport-arrival-uid'>(LHR)</p>
+                <p className='segment__capital-departure'>{departureCity},</p>
+                <p className='segment__airport-departure'>{departureAirport}</p>
+                <p className='segment__airport-departure-uid'>({departureAirportUid})&rarr;</p>
+                <p className='segment__capital-arrival'>{arrivalCity},</p>
+                <p className='segment__airport-arrival'>{arrivalAirport}</p>
+                <p className='segment__airport-arrival-uid'>({arrivalAirportUid})</p>
             </div>
             <div className='segment__timing'>
                 <div className='segment__timing-item'>
-                    <p className='segment__time'>20;40</p>
+                    <p className='segment__time'>{departureTime}</p>
                     <p className='segment__data'>19 out cp</p>
                 </div>
 
                 <div className='segment__duration'>
                     <img className='segment__duration-img' src={Clock} alt='Часы' />
-                    <p className='segment__'>14ч 45мин</p>
+                    <p className='segment__duration'>{hours}ч {minutes}мин</p>
                 </div>
                 <div className='segment__timing-item'>
-                    <p className='segment__data'>19 out cp</p>
-                    <p className='segment__time'>09/25</p>
+                    <p className='segment__data'>{arrivalDate}</p>
+                    <p className='segment__time'>{arrivalTime}</p>
                 </div>
 
             </div>
