@@ -44,10 +44,12 @@
     height: 30px;
     width: 30px;
 }
-/* .segment__stops{
-    display: flex;
-} */
+
 .flight__stop {
+    color: white;
+}
+
+.flight__stop_active {
     position: relative;
     z-index: 1;
     margin-bottom: -17px;

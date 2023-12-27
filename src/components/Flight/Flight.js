@@ -28,13 +28,29 @@ function Flight({ departureCity,
     const departureOnlyDate = stringDepartureDate.substring(0, 10);//Время вылета
     const arrivalOnlyDate = stringArrivalDate.substring(0, 10);//Время прилета
 
+    const transfer = hasTransfer - 1;
+
+    const classTransfer = (
+        `flight__stop ${(transfer !== 0) && 'flight__stop_active'}`
+    );
+/* 
+    const transferText = () => {
+        if (transfer === 0) {
+            return ' ';
+        }if (transfer === 1){
+            return '1 пересадка';
+        }if (transfer === 2){
+            return '2 пересадки';
+        }
+    };
+    console.log(transferText); */
     /* console.log(stringDepartureOnlyDate.toLocaleDateString(undefined, { weekday: 'long' })); */
 
 
 
 
     /* console.log(str.toLocaleDateString(undefined, { weekday: 'long' })); */
-   /*  console.log(hasTransfer()); */
+    /*  console.log(hasTransfer()); */
 
 
 
@@ -64,7 +80,7 @@ function Flight({ departureCity,
                 </div>
             </div>
             <div className='flight__stops'>
-                <p className='flight__stop'>{hasTransfer} пересадок</p>
+                <div className={classTransfer}>1 пересадка</div>
                 <hr className='flight__line'></hr>
             </div>
 

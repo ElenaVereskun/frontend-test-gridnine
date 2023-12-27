@@ -6,20 +6,6 @@ function Card({ card }) {
 
     const firstSegment = card.flight.legs[0].segments[0];
 
-    function hasTransfer() {
-        if (card.flight.legs[0].segments.length === 1) {
-            return 0;
-        }
-        if (card.flight.legs[0].segments.length === 2) {
-            return 1;
-        }
-        if (card.flight.legs[0].segments.length === 3) {
-            return 2;
-        }
-    };
-
-
-
     return (
         <li className='card'>
             <div className='card__heading'>
@@ -72,7 +58,7 @@ function Card({ card }) {
                 arrivalDate={card.flight.legs[0].segments[0].arrivalDate}
                 airlinesUid={card.flight.legs[0].segments[0].airline.uid}
                 airlines={card.flight.legs[0].segments[0].airline.caption}
-                hasTransfer={hasTransfer} />
+                hasTransfer={card.flight.legs[0].segments.length} />
             <button className='card__button'>ВЫБРАТЬ</button>
         </li>
     )

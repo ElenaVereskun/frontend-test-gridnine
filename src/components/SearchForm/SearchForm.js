@@ -2,11 +2,17 @@ import { React } from 'react';
 
 function SearchForm({ minPrice,
     airlines,
+    anotherMinPrice,
+    anotherAirlines,
     checkedPriceUp,
     checkedPriceDown,
     checkedFilterByDuration,
+    checkedFilterByMinPrice,
+    checkedFilterByAnotherAirlines,
     filterFlightsByPrice,
-    filterFlightsByDuration
+    filterFlightsByDuration,
+    filterByMinPrice,
+    filterByAnotherAirlines
 }) {
 
 
@@ -69,12 +75,18 @@ function SearchForm({ minPrice,
                 <div className='search-form__airlines'>
                     <h2 className='search-form__airlines-title'>Авиакомпании</h2>
                     <div className='search-form__airlines-container'>
-                        <input className='search-form__airlines-checkbox' type="checkbox" />
-                        <label className='search-form__airlines-text'> - {airlines.flight.carrier.caption} от {minPrice} p.</label>
+                        <input className='search-form__airlines-checkbox'
+                            onChange={checkedFilterByMinPrice}
+                            onClick={filterByMinPrice}
+                            type="checkbox" />
+                        <label className='search-form__airlines-text'> - {airlines} от {minPrice} p.</label>
                     </div>
                     <div className='search-form__airlines-container'>
-                        <input className='search-form__airlines-checkbox' type="checkbox" />
-                        <label className='search-form__airlines-text'> - {airlines.flight.carrier.caption} от {minPrice} p.</label>
+                        <input className='search-form__airlines-checkbox'
+                            onChange={checkedFilterByAnotherAirlines}
+                            onClick={filterByAnotherAirlines}
+                            type="checkbox" />
+                        <label className='search-form__airlines-text'> - {anotherAirlines} от {anotherMinPrice} p.</label>
                     </div>
                 </div>
             </form>
