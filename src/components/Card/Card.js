@@ -3,6 +3,29 @@ import Flight from '../Flight/Flight';
 
 function Card({ card }) {
 
+    const transfer = card.flight.legs[0].segments.length - 1;
+    const transferBack = card.flight.legs[1].segments.length - 1;
+
+    const classTransfer = (
+        `flight__stop ${(transfer !== 0) && 'flight__stop_active'}`
+    );
+
+    const countTransfer = `${transfer === 1 ? '1 пересадка' : ' '}`
+    //перелет туда
+    let arrival;
+    if (transfer === 0) {
+        arrival = card.flight.legs[0].segments[0];
+    } else {
+        arrival = card.flight.legs[0].segments[1];
+    };
+    //перелет обратно
+    let arrivalBack;
+    if (transferBack === 0) {
+        arrivalBack = card.flight.legs[1].segments[0];
+    } else {
+        arrivalBack = card.flight.legs[1].segments[1];
+    };
+
     return (
         <li className='card'>
             <div className='card__heading'>
@@ -16,29 +39,31 @@ function Card({ card }) {
                 departureCity={card.flight.legs[0].segments[0].departureCity.caption}
                 departureAirport={card.flight.legs[0].segments[0].departureAirport.caption}
                 departureAirportUid={card.flight.legs[0].segments[0].departureAirport.uid}
-                arrivalCity={card.flight.legs[0].segments[0].arrivalCity.caption}
-                arrivalAirport={card.flight.legs[0].segments[0].arrivalAirport.caption}
-                arrivalAirportUid={card.flight.legs[0].segments[0].arrivalAirport.uid}
+                arrivalCity={arrival.arrivalCity.caption}
+                arrivalAirport={arrival.arrivalAirport.caption}
+                arrivalAirportUid={arrival.arrivalAirport.uid}
                 duration={card.flight.legs[0].duration}
                 departureDate={card.flight.legs[0].segments[0].departureDate}
                 arrivalDate={card.flight.legs[0].segments[0].arrivalDate}
                 airlinesUid={card.flight.legs[0].segments[0].airline.uid}
                 airlines={card.flight.legs[0].segments[0].airline.caption}
-                transfer={card.flight.legs[0].segments.length - 1} />
+                classTransfer={classTransfer}
+                countTransfer={countTransfer} />
             <hr className='card__line'></hr>
             <Flight
-                departureCity={card.flight.legs[0].segments[0].departureCity.caption}//????????
+                departureCity={card.flight.legs[1].segments[0].departureCity.caption}
                 departureAirport={card.flight.legs[1].segments[0].departureAirport.caption}
                 departureAirportUid={card.flight.legs[1].segments[0].departureAirport.uid}
-                arrivalCity={card.flight.legs[1].segments[0].arrivalCity.caption}
-                arrivalAirport={card.flight.legs[1].segments[0].arrivalAirport.caption}
-                arrivalAirportUid={card.flight.legs[1].segments[0].arrivalAirport.uid}
+                arrivalCity={arrivalBack.arrivalCity.caption}
+                arrivalAirport={arrivalBack.arrivalAirport.caption}
+                arrivalAirportUid={arrivalBack.arrivalAirport.uid}
                 duration={card.flight.legs[1].duration}
                 departureDate={card.flight.legs[1].segments[0].departureDate}
                 arrivalDate={card.flight.legs[1].segments[0].arrivalDate}
                 airlinesUid={card.flight.legs[1].segments[0].airline.uid}
                 airlines={card.flight.legs[1].segments[0].airline.caption}
-                transfer={card.flight.legs[1].segments.length - 1} />
+                classTransfer={classTransfer}
+                countTransfer={countTransfer} />
 
             <button className='card__button'>ВЫБРАТЬ</button>
         </li>

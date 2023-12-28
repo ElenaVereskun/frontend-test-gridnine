@@ -60,3 +60,6 @@
 .search-form__airlines-container{
     white-space: nowrap;
 }
+.search-form__airlines-text{
+    white-space: nowrap;
+}

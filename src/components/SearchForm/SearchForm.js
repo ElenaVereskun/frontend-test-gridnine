@@ -1,13 +1,11 @@
 import { React } from 'react';
 
 function SearchForm({
-    /* minPrice,
-    airlines,
+    minPrice,
     anotherMinPrice,
-    anotherAirlines, */
     isPriceUp,
     isPriceDown,
-    flightsData,
+    /* flightsData, */
     checkedPriceUp,
     checkedPriceDown,
     checkedFilterByDuration,
@@ -27,19 +25,9 @@ function SearchForm({
     onSearchFlights
 }) {
 
-    /*     const filterByPrice = flightsData.sort((a, b) => {
-            return (a.flight.price.total.amount) - (b.flight.price.total.amount);
-        });
-        const minPrice = filterByPrice.shift();
-    
-    
-        const anotherMinPrice = filterByPrice.find((item) => {
-            return item.flight.carrier.caption !== minPrice.flight.carrier.caption;
-        }); */
-
     return (
         <section>
-            <form className='search-form' >
+            <form className='search-form'>
                 <div className='search-form__sort'>
                     <h2 className='search-form__sort-title'>Сортировать</h2>
                     <div className='search-form__sort-container'>
@@ -47,7 +35,6 @@ function SearchForm({
                             checked={isPriceUp}
                             onChange={checkedPriceUp}
                             onClick={sortFlightsByPrice}
-                            /* checked={checkedPriceUp} */
                             type="checkbox" />
                         <label className='search-form__sort-text'> - по возрастанию цены</label>
                     </div>
@@ -92,7 +79,7 @@ function SearchForm({
                             <input className='search-form__prise-min'
                                 value={searchMinPrice}
                                 onChange={handleMinPrice}
-                                onClick={onSearchFlights}
+                                onMouseLeave={onSearchFlights}
                                 type='number'
                                 placeholder="0" />
                         </div>
@@ -101,18 +88,18 @@ function SearchForm({
                             <input className='search-form__prise-max'
                                 value={searchMaxPrice}
                                 onChange={handleMaxPrice}
-                                onClick={onSearchFlights}
+                                onMouseLeave={onSearchFlights}
                                 type='number'
                                 placeholder="1000000" />
                         </div>
                     </div>
                 </div>
-                {/*                 <div className='search-form__airlines'>
+                {/*   <div className='search-form__airlines'>
                     <h2 className='search-form__airlines-title'>Авиакомпании</h2>
                     <div className='search-form__airlines-container'>
                         <input className='search-form__airlines-checkbox'
                             onChange={checkedFilterByMinPrice}
-                            onClick={filterByMinPrice}
+                             onClick={filterByMinPrice}
                             type="checkbox" />
                         <label className='search-form__airlines-text'> - {minPrice.flight.carrier.caption} от
                             {minPrice.flight.price.total.amount} p.</label>
@@ -131,24 +118,3 @@ function SearchForm({
     )
 }
 export default SearchForm;
-
-{/* <section>
-<form className='search-form' onSubmit={handleSubmit}>
-    <div className='search-form__quest'>
-        <input className='search-form__input'
-            value={searchValue}
-            name="search"
-            onChange={handleChangeSearch}
-            placeholder="Фильм" />
-        <span ></span>
-        <button className='search-form__button'>Поиск</button>
-    </div>
-    <div className='search-form__short'>
-        <FilterCheckbox
-            onClickCheckbox={onClickCheckbox}
-            isShort={isShort}
-            handleChek={handleChek} />
-        <p className='search-form__short-text'>Короткометражки</p>
-    </div>
-</form>
-</section> */}

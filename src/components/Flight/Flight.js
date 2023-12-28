@@ -12,7 +12,8 @@ function Flight({ departureCity,
     arrivalDate,
     airlinesUid,
     airlines,
-    transfer
+    classTransfer,
+    countTransfer
 }) {
 
     const minutes = duration % 60;
@@ -28,13 +29,13 @@ function Flight({ departureCity,
     const departureOnlyDate = stringDepartureDate.substring(0, 10);//Время вылета
     const arrivalOnlyDate = stringArrivalDate.substring(0, 10);//Время прилета
 
-    
 
-    const classTransfer = (
+
+    /* const classTransfer = (
         `flight__stop ${(transfer !== 0) && 'flight__stop_active'}`
     );
 
-    const oneTransfer = `${transfer === 1 ? '1 пересадка' : ' '}`
+    const oneTransfer = `${transfer === 1 ? '1 пересадка' : ' '}` */
 
     return (
         <div className='flight'>
@@ -62,7 +63,7 @@ function Flight({ departureCity,
                 </div>
             </div>
             <div className='flight__stops'>
-                <div className={classTransfer}>{oneTransfer}</div>
+                <div className={classTransfer}>{countTransfer}</div>
                 <hr className='flight__line'></hr>
             </div>
 
