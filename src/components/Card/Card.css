@@ -32,3 +32,8 @@
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
+.card__line {
+    border-bottom: 2px solid rgb(0, 140, 255);
+    width: 100%;
+}

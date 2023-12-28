@@ -4,13 +4,7 @@ import Card from '../Card/Card';
 
 function CardList({flights}) {
 
-    
-
-    const [moviesView, setMoviesView] = useState('');
-
-    function compareMovie(savedFilms, movie) {
-        return savedFilms.some((savedFilm) => savedFilm.movieId === movie.id);
-    }
+  /*   console.log(flights); */
 
     /*     function moviesToOpen() {
             window.addEventListener('resize', moviesToOpen);

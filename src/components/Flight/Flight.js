@@ -12,7 +12,7 @@ function Flight({ departureCity,
     arrivalDate,
     airlinesUid,
     airlines,
-    hasTransfer
+    transfer
 }) {
 
     const minutes = duration % 60;
@@ -28,31 +28,13 @@ function Flight({ departureCity,
     const departureOnlyDate = stringDepartureDate.substring(0, 10);//Время вылета
     const arrivalOnlyDate = stringArrivalDate.substring(0, 10);//Время прилета
 
-    const transfer = hasTransfer - 1;
+    
 
     const classTransfer = (
         `flight__stop ${(transfer !== 0) && 'flight__stop_active'}`
     );
-/* 
-    const transferText = () => {
-        if (transfer === 0) {
-            return ' ';
-        }if (transfer === 1){
-            return '1 пересадка';
-        }if (transfer === 2){
-            return '2 пересадки';
-        }
-    };
-    console.log(transferText); */
-    /* console.log(stringDepartureOnlyDate.toLocaleDateString(undefined, { weekday: 'long' })); */
 
-
-
-
-    /* console.log(str.toLocaleDateString(undefined, { weekday: 'long' })); */
-    /*  console.log(hasTransfer()); */
-
-
+    const oneTransfer = `${transfer === 1 ? '1 пересадка' : ' '}`
 
     return (
         <div className='flight'>
@@ -80,7 +62,7 @@ function Flight({ departureCity,
                 </div>
             </div>
             <div className='flight__stops'>
-                <div className={classTransfer}>1 пересадка</div>
+                <div className={classTransfer}>{oneTransfer}</div>
                 <hr className='flight__line'></hr>
             </div>
 
