@@ -6,7 +6,7 @@ function Card({ card }) {
     return (
         <li className='card'>
             <div className='card__heading'>
-                <img className='card__logo' src='#' alt='логотип' />
+                <p className='card__airlines'>{card.flight.legs[0].segments[0].airline.uid}</p>
                 <div>
                     <p className='card__prise'>{card.flight.price.total.amount} ₽</p>
                     <p className='card__prise-caption'>Стоимость для одного взрослого пассажира</p>

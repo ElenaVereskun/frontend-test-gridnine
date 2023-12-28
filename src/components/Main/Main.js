@@ -65,15 +65,12 @@ function Main() {
         }
     };
 
-
-
-    console.log(searchMinPriceValue);
-    console.log(searchMaxPriceValue);
-
     function searchByPrice() {
-        flightsData.filter((item) => {
-            return setFilterFlights(searchMinPriceValue < item.flight.price.total.amount > searchMaxPriceValue);
+        const filterByPrice = flightsData.filter((item) => {
+            return ((searchMinPriceValue <= item.flight.price.total.amount) && 
+            (item.flight.price.total.amount <= searchMaxPriceValue));
         })
+        setFilterFlights(filterByPrice);
     };
 
     //поиск минимальной цены
