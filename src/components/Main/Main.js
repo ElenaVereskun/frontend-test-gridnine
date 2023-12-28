@@ -7,6 +7,8 @@ function Main() {
     const [isPriceUp, setIsPriceUp] = useState(false);
     const [isPriceDown, setIsPriceDown] = useState(false);
     const [isFilterByDuration, setIsFilterByDuration] = useState(false);
+    const [isByTransfer, setIsByTransfer] = useState(false);
+    const [isNoTransfer, setIsNoTransfer] = useState(false);
     const [isFilterByMinPrice, setIsFilterByMinPrice] = useState(false);
     const [isFilterByAnotherAirlines, setIsFilterByAnotherAirlines] = useState(false);
     const [searchMinPriceValue, setSearchMinPriceValue] = useState('');
@@ -47,14 +49,19 @@ function Main() {
     };
 
     function filterFlightsByTransfer() {
-        if (isFilterByDuration === true) {
-            flightsData.sort((a, b) => {
-                console.log("времени в пути");
-                return a.flight.legs[0].duration - b.flight.legs[0].duration;
+        if (isByTransfer && !isNoTransfer) {
+            const filterByTrasfer = flightsData.filter((item) => {
+                return item.flight.legs[0].segments.length - 1 !== 0 ||
+                    item.flight.legs[1].segments.length - 1 !== 0;
             })
+            setFilterFlights(filterByTrasfer);
         }
-        else {
-            return filterFlights;
+        if (!isByTransfer && isNoTransfer) {
+            const filterNoTrasfer = flightsData.filter((item) => {
+                return item.flight.legs[0].segments.length - 1 === 0 &&
+                    item.flight.legs[1].segments.length - 1 === 0;
+            })
+            setFilterFlights(filterNoTrasfer);
         }
     };
 
@@ -110,6 +117,14 @@ function Main() {
         setIsFilterByDuration(e.target.checked);
     };
 
+    function checkedByTransfer(e) {
+        setIsByTransfer(e.target.checked);
+    };
+
+    function checkedNoTransfer(e) {
+        setIsNoTransfer(e.target.checked);
+    };
+
     function checkedFilterByMinPrice(e) {
         setIsFilterByMinPrice(e.target.checked);
     };
@@ -141,6 +156,8 @@ function Main() {
                 sortFlightsByPrice={sortFlightsByPrice}
                 sortFlightsByDuration={sortFlightsByDuration}
                 filterFlightsByTransfer={filterFlightsByTransfer}
+                checkedByTransfer={checkedByTransfer}
+                checkedNoTransfer={checkedNoTransfer}
                 filterByMinPrice={filterByMinPrice}
                 filterByAnotherAirlines={filterByAnotherAirlines}
                 searchMinPrice={searchMinPriceValue}
