@@ -54,14 +54,3 @@
 .search-form__filter-checkbox{
     cursor: pointer;
 }
-.search-form__airlines-checkbox{
-    cursor: pointer;
-}
-.search-form__airlines-container{
-    white-space: nowrap;
-}
-.search-form__airlines-text{
-    white-space: nowrap;
-    border: none;
-    background-color: white;
-}

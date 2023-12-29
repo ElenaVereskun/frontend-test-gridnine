@@ -15,31 +15,27 @@ function Main() {
 
     const [searchMinPriceValue, setSearchMinPriceValue] = useState('');
     const [searchMaxPriceValue, setSearchMaxPriceValue] = useState('');
-
     //исходный массив оъектов
     const flightsData = FlightsData.result.flights;
 
     const [filterFlights, setFilterFlights] = useState(flightsData);
 
 
-  /*  useEffect(() => {
-        filterByMinPrice();
-    }, []); */
+        useEffect(() => {
+            sortFlightsByPrice();
+        }, [isPriceUp, isPriceDown]);
 
     function sortFlightsByPrice() {
         if (isPriceUp && !isPriceDown) {
-            console.log("по возрастанию");
             const sortPriceUp = flightsData.sort((a, b) => {
                 return a.flight.price.total.amount - b.flight.price.total.amount;
             })
-            setFilterFlights(sortPriceUp);       
+            setFilterFlights(sortPriceUp);
         }
         if (!isPriceUp && isPriceDown) {
-            console.log("по уьыванию");
             const sortPriceDown = flightsData.sort((a, b) => {
                 return b.flight.price.total.amount - a.flight.price.total.amount;
             })
-            console.log(sortPriceDown);
             setFilterFlights(sortPriceDown);
         }
         if (!isPriceUp && !isPriceDown) {
@@ -83,31 +79,30 @@ function Main() {
         setFilterFlights(filterByPrice);
     };
 
-    //Определение компании с мин ценой
-    const airlines = localStorage.getItem('airlines');
-    console.log(airlines);
-    const ahotherAirlines = localStorage.getItem('ahotherAirlines');
-    console.log(ahotherAirlines);
+    //Определение мин ценой
+    const minPrice = JSON.parse(localStorage.getItem('minPrice'));
+    console.log(minPrice);
+    const anotherMinPrice = JSON.parse(localStorage.getItem('anotherMinPrice'));
+    console.log(anotherMinPrice);
 
     function filterByMinPrice() {
-        
         if (isFilterByMinPrice && !isFilterByAnotherAirlines) {
             console.log('by min price');
             flightsData.filter((item) => {
-                return item.flight.carrier.caption === airlines;
+                return item.flight.carrier.caption === minPrice.flight.carrier.caption;
             })
         }
         if (!isFilterByMinPrice && isFilterByAnotherAirlines) {
             console.log('by min other price');
             flightsData.filter((item) => {
-                return item.flight.carrier.caption === ahotherAirlines;
+                return item.flight.carrier.caption === anotherMinPrice.flight.carrier.caption;
             })
         }
         if (isFilterByMinPrice && isFilterByAnotherAirlines) {
             console.log('bouth price');
             flightsData.filter((item) => {
-                return item.flight.carrier.caption === ahotherAirlines &&
-                    item.flight.carrier.caption === airlines;
+                return item.flight.carrier.caption === anotherMinPrice.flight.carrier.caption &&
+                    item.flight.carrier.caption === minPrice.flight.carrier.caption;
             })
         }
         else {

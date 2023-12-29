@@ -1,29 +1,27 @@
 import { React } from 'react';
-import FlightsData from '../../utils/flights.json';
 
 function SearchMinPrice({
+    flightsData,
     checkedFilterByMinPrice,
     filterByMinPrice,
     checkedFilterByAnotherAirlines
 }) {
 
-    const flightsData = FlightsData.result.flights;
-
     const filterByPrice = flightsData.sort((a, b) => {
         return (a.flight.price.total.amount) - (b.flight.price.total.amount);
     });
 
-    const minPrice = filterByPrice.shift();
+    const minPrice = filterByPrice[0];
 
     const anotherMinPrice = filterByPrice.find((item) => {
         return item.flight.carrier.caption !== minPrice.flight.carrier.caption;
     });
 
-    const airlines = minPrice.flight.carrier.caption;
-    localStorage.setItem("airlines", airlines);
-    const ahotherAirlines = anotherMinPrice.flight.carrier.caption;
-    localStorage.setItem("ahotherAirlines", ahotherAirlines);
+    console.log(minPrice);
+    console.log(anotherMinPrice);
 
+    localStorage.setItem("minPrice",JSON.stringify(minPrice));
+    localStorage.setItem("anotherMinPrice",JSON.stringify(anotherMinPrice));
     return (
         <div className='search-min-price__airlines'>
             <h2 className='search-min-price__airlines-title'>Авиакомпании</h2>
@@ -36,7 +34,7 @@ function SearchMinPrice({
                     className='search-min-price__airlines-text'
                     id='airlines'
                     type='text'
-                    value={airlines}
+                    value={minPrice.flight.carrier.caption}
                     disabled />
                 <label className='search-min-price__min-price'>
                     от {minPrice.flight.price.total.amount} p.</label>
@@ -50,7 +48,7 @@ function SearchMinPrice({
                     className='search-min-price__airlines-text'
                     id='anotherAirlines'
                     type='text'
-                    value={ahotherAirlines}
+                    value={anotherMinPrice.flight.carrier.caption}
                     disabled />
                 <label className='search-min-price__min-price'>от
                     {anotherMinPrice.flight.price.total.amount} p.</label>
