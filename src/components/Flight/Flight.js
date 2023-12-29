@@ -19,7 +19,7 @@ function Flight({ departureCity,
     const minutes = duration % 60;
     const hours = Math.floor(duration / 60);
 
-    //Перевод даты в нужный формат
+    //получение даты
     const stringDepartureDate = new String(departureDate);
     const stringArrivalDate = new String(arrivalDate);
 
@@ -28,14 +28,6 @@ function Flight({ departureCity,
 
     const departureOnlyDate = stringDepartureDate.substring(0, 10);//Время вылета
     const arrivalOnlyDate = stringArrivalDate.substring(0, 10);//Время прилета
-
-
-
-    /* const classTransfer = (
-        `flight__stop ${(transfer !== 0) && 'flight__stop_active'}`
-    );
-
-    const oneTransfer = `${transfer === 1 ? '1 пересадка' : ' '}` */
 
     return (
         <div className='flight'>

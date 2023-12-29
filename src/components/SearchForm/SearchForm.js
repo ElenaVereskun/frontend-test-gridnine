@@ -1,11 +1,9 @@
 import { React } from 'react';
+import SearchMinPrice from '../SearchMinPrice/SearchMinPrice';
 
 function SearchForm({
-    minPrice,
-    anotherMinPrice,
     isPriceUp,
     isPriceDown,
-    /* flightsData, */
     checkedPriceUp,
     checkedPriceDown,
     checkedFilterByDuration,
@@ -17,7 +15,6 @@ function SearchForm({
     checkedByTransfer,
     checkedNoTransfer,
     filterByMinPrice,
-    filterByAnotherAirlines,
     searchMinPrice,
     handleMinPrice,
     searchMaxPrice,
@@ -94,22 +91,37 @@ function SearchForm({
                         </div>
                     </div>
                 </div>
-                {/*   <div className='search-form__airlines'>
+                <SearchMinPrice checkedFilterByMinPrice={checkedFilterByMinPrice}
+                    filterByMinPrice={filterByMinPrice}
+                    checkedFilterByAnotherAirlines={checkedFilterByAnotherAirlines} />
+                {/*                 <div className='search-form__airlines'>
                     <h2 className='search-form__airlines-title'>Авиакомпании</h2>
                     <div className='search-form__airlines-container'>
                         <input className='search-form__airlines-checkbox'
                             onChange={checkedFilterByMinPrice}
-                             onClick={filterByMinPrice}
+                            onClick={filterByMinPrice}
                             type="checkbox" />
-                        <label className='search-form__airlines-text'> - {minPrice.flight.carrier.caption} от
-                            {minPrice.flight.price.total.amount} p.</label>
+                        <input
+                            className='search-form__airlines-text'
+                            id='airlines'
+                            type='text'
+                            value={airlines}
+                            disabled />
+                        <label className='search-form__min-price'>
+                            от {minPrice.flight.price.total.amount} p.</label>
                     </div>
                     <div className='search-form__airlines-container'>
                         <input className='search-form__airlines-checkbox'
                             onChange={checkedFilterByAnotherAirlines}
-                            onClick={filterByAnotherAirlines}
+                            onClick={filterByMinPrice}
                             type="checkbox" />
-                        <label className='search-form__airlines-text'> - {anotherMinPrice.flight.carrier.caption} от
+                        <input
+                            className='search-form__airlines-text'
+                            id='anotherAirlines'
+                            type='text'
+                            value={ahotherAirlines}
+                            disabled />
+                        <label className='search-form__min-price'>от
                             {anotherMinPrice.flight.price.total.amount} p.</label>
                     </div>
                 </div> */}

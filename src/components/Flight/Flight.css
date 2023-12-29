@@ -33,6 +33,8 @@
 .flight__data {
     color: rgb(0, 140, 255);
     font-size: 18px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .flight__duration {

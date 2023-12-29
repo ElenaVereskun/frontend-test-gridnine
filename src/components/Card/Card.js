@@ -9,8 +9,8 @@ function Card({ card }) {
     const classTransfer = (
         `flight__stop ${(transfer !== 0) && 'flight__stop_active'}`
     );
-
     const countTransfer = `${transfer === 1 ? '1 пересадка' : ' '}`
+
     //перелет туда
     let arrival;
     if (transfer === 0) {
@@ -64,7 +64,6 @@ function Card({ card }) {
                 airlines={card.flight.legs[1].segments[0].airline.caption}
                 classTransfer={classTransfer}
                 countTransfer={countTransfer} />
-
             <button className='card__button'>ВЫБРАТЬ</button>
         </li>
     )

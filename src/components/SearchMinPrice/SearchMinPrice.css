@@ -1,0 +1,11 @@
+.search-min-price__airlines-checkbox{
+    cursor: pointer;
+}
+.search-min-price__airlines-container{
+    white-space: nowrap;
+}
+.search-min-price__airlines-text{
+    white-space: nowrap;
+    border: none;
+    background-color: white;
+}
