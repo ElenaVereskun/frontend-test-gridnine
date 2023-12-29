@@ -1,12 +1,13 @@
 import { React } from 'react';
 
-function SearchMinPrice({
-    flightsData,
-    checkedFilterByMinPrice,
+function SearchMinPrice({    
     filterByMinPrice,
-    checkedFilterByAnotherAirlines
+    checkByMinPrice,
+    checkByAnotherAirlines
 }) {
 
+    const flightsData = JSON.parse(localStorage.getItem('flightsData'));
+    
     const filterByPrice = flightsData.sort((a, b) => {
         return (a.flight.price.total.amount) - (b.flight.price.total.amount);
     });
@@ -17,17 +18,15 @@ function SearchMinPrice({
         return item.flight.carrier.caption !== minPrice.flight.carrier.caption;
     });
 
-    console.log(minPrice);
-    console.log(anotherMinPrice);
-
     localStorage.setItem("minPrice",JSON.stringify(minPrice));
     localStorage.setItem("anotherMinPrice",JSON.stringify(anotherMinPrice));
+
     return (
         <div className='search-min-price__airlines'>
             <h2 className='search-min-price__airlines-title'>Авиакомпании</h2>
             <div className='search-min-price__airlines-container'>
                 <input className='search-min-price__airlines-checkbox'
-                    onChange={checkedFilterByMinPrice}
+                    onChange={checkByMinPrice}
                     onClick={filterByMinPrice}
                     type="checkbox" />
                 <input
@@ -41,7 +40,7 @@ function SearchMinPrice({
             </div>
             <div className='search-min-price__airlines-container'>
                 <input className='search-min-price__airlines-checkbox'
-                    onChange={checkedFilterByAnotherAirlines}
+                    onChange={checkByAnotherAirlines}
                     onClick={filterByMinPrice}
                     type="checkbox" />
                 <input

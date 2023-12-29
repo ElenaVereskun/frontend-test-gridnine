@@ -2,14 +2,13 @@ import { React } from 'react';
 import SearchMinPrice from '../SearchMinPrice/SearchMinPrice';
 
 function SearchForm({
-    flightsData,
     isPriceUp,
     isPriceDown,
     checkedPriceUp,
     checkedPriceDown,
     checkedFilterByDuration,
-    checkedFilterByMinPrice,
-    checkedFilterByAnotherAirlines,
+    checkByMinPrice,
+    checkByAnotherAirlines,
     sortFlightsByPrice,
     sortFlightsByDuration,
     filterFlightsByTransfer,
@@ -93,10 +92,9 @@ function SearchForm({
                     </div>
                 </div>
                 <SearchMinPrice
-                    flightsData={flightsData}
-                    checkedFilterByMinPrice={checkedFilterByMinPrice}
+                    checkByMinPrice={checkByMinPrice}
                     filterByMinPrice={filterByMinPrice}
-                    checkedFilterByAnotherAirlines={checkedFilterByAnotherAirlines} />
+                    checkByAnotherAirlines={checkByAnotherAirlines} />
             </form>
         </section>
     )
