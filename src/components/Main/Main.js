@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import CardList from '../CardList/CardList';
 import FlightsData from '../../utils/flights.json';
@@ -20,6 +20,10 @@ function Main() {
     localStorage.setItem("flightsData",JSON.stringify(flightsData));
 
     const [filterFlights, setFilterFlights] = useState(flightsData);
+
+    /* useEffect(() => {
+        sortFlightsByPrice();
+    }, [isPriceUp, isPriceDown]); */
 
     function sortFlightsByPrice() {
         if (isPriceUp && !isPriceDown) {
@@ -119,7 +123,8 @@ function Main() {
     };
 
     function checkedFilterByDuration(e) {
-        setIsFilterByDuration(e.target.checked);
+        const isPriceDown = e.target.checked;
+        setIsFilterByDuration(isPriceDown);
     };
 
     function checkedByTransfer(e) {
