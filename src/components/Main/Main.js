@@ -16,7 +16,9 @@ function Main() {
     const [searchMinPriceValue, setSearchMinPriceValue] = useState('');
     const [searchMaxPriceValue, setSearchMaxPriceValue] = useState('');
     //исходный массив оъектов
-    const flightsData = FlightsData.result.flights;
+    const flights = FlightsData.result.flights;
+    const flightsData = [...flights];
+    console.log(flightsData);
     localStorage.setItem("flightsData", JSON.stringify(flightsData));
 
     const [filterFlights, setFilterFlights] = useState(flightsData);
@@ -46,14 +48,16 @@ function Main() {
 
     function sortFlightsByPrice() {
         if (isPriceUp && !isPriceDown) {            
-            flightsData.sort((a, b) => {
+            const filtered =  flightsData.sort((a, b) => {
                 return a.flight.price.total.amount - b.flight.price.total.amount;
             })
+            setFilterFlights(filtered);
         }
         if (!isPriceUp && isPriceDown) {
-            flightsData.sort((a, b) => {
+            const filtered =  flightsData.sort((a, b) => {
                 return b.flight.price.total.amount - a.flight.price.total.amount;
             })
+            setFilterFlights(filtered);
         }
         if (!isPriceUp && !isPriceDown) {
             return filterFlights;
@@ -62,10 +66,10 @@ function Main() {
 
     function sortFlightsByDuration() {
         if (isFilterByDuration) {
-            flightsData.sort((a, b) => {
+            const filtered = flightsData.sort((a, b) => {
                 return a.flight.legs[0].duration - b.flight.legs[0].duration;
             })
-            
+            setFilterFlights(filtered);
         }
         else {
             return filterFlights;
