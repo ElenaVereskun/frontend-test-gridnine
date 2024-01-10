@@ -2,19 +2,13 @@ import { React } from 'react';
 import SearchMinPrice from '../SearchMinPrice/SearchMinPrice';
 
 function SearchForm({
-    isPriceUp,
-    isPriceDown,
     checkedPriceUp,
     checkedPriceDown,
     checkedFilterByDuration,
     checkByMinPrice,
     checkByAnotherAirlines,
-    sortFlightsByPrice,
-    sortFlightsByDuration,
-    filterFlightsByTransfer,
     checkedByTransfer,
     checkedNoTransfer,
-    filterByMinPrice,
     searchMinPrice,
     handleMinPrice,
     searchMaxPrice,
@@ -29,24 +23,19 @@ function SearchForm({
                     <h2 className='search-form__sort-title'>Сортировать</h2>
                     <div className='search-form__sort-container'>
                         <input className='search-form__sort-checkbox'
-                            checked={isPriceUp}
-                            onChange={checkedPriceUp}
-                            onClick={sortFlightsByPrice}
+                            onClick={checkedPriceUp}
                             type="checkbox" />
                         <label className='search-form__sort-text'> - по возрастанию цены</label>
                     </div>
                     <div className='search-form__sort-container'>
                         <input className='search-form__sort-checkbox'
-                            checked={isPriceDown}
-                            onChange={checkedPriceDown}
-                            onClick={sortFlightsByPrice}
+                            onClick={checkedPriceDown}
                             type="checkbox" />
                         <label className='search-form__sort-text'> - по убыванию цены</label>
                     </div>
                     <div className='search-form__sort-container'>
                         <input className='search-form__sort-checkbox'
-                            onChange={checkedFilterByDuration}
-                            onClick={sortFlightsByDuration}
+                            onClick={checkedFilterByDuration}
                             type="checkbox" />
                         <label className='search-form__sort-text'> - по времени в пути</label>
                     </div>
@@ -55,15 +44,13 @@ function SearchForm({
                     <h2 className='search-form__filter-title'>Фильтровать</h2>
                     <div className='search-form__filter-container'>
                         <input className='search-form__filter-checkbox'
-                            onChange={checkedByTransfer}
-                            onClick={filterFlightsByTransfer}
+                            onClick={checkedByTransfer}
                             type="checkbox" />
                         <label className='search-form__filter-text'> - 1 пересадка</label>
                     </div>
                     <div className='search-form__filter-container'>
                         <input className='search-form__filter-checkbox'
-                            onChange={checkedNoTransfer}
-                            onClick={filterFlightsByTransfer}
+                            onClick={checkedNoTransfer}
                             type="checkbox" />
                         <label className='search-form__filter-text'> - без пересадок</label>
                     </div>
@@ -93,7 +80,6 @@ function SearchForm({
                 </div>
                 <SearchMinPrice
                     checkByMinPrice={checkByMinPrice}
-                    filterByMinPrice={filterByMinPrice}
                     checkByAnotherAirlines={checkByAnotherAirlines} />
             </form>
         </section>

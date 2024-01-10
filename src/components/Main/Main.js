@@ -17,16 +17,35 @@ function Main() {
     const [searchMaxPriceValue, setSearchMaxPriceValue] = useState('');
     //исходный массив оъектов
     const flightsData = FlightsData.result.flights;
-    localStorage.setItem("flightsData",JSON.stringify(flightsData));
+    localStorage.setItem("flightsData", JSON.stringify(flightsData));
 
     const [filterFlights, setFilterFlights] = useState(flightsData);
 
-    /* useEffect(() => {
+     useEffect(() => {
+        setIsPriceUp();
+        setIsPriceDown();
         sortFlightsByPrice();
-    }, [isPriceUp, isPriceDown]); */
+    }, [isPriceUp, isPriceDown]);
+
+    useEffect(() => {
+        setIsFilterByDuration();
+        sortFlightsByDuration();
+    }, [isFilterByDuration]);
+
+    useEffect(() => {
+        setIsByTransfer();
+        setIsNoTransfer();
+        filterFlightsByTransfer();
+    }, [isByTransfer, isNoTransfer]);
+
+    useEffect(() => {
+        setIsFilterByMinPrice();
+        setIsFilterByAnotherAirlines();
+        filterByMinPrice();
+    }, [isFilterByMinPrice, isFilterByAnotherAirlines]);
 
     function sortFlightsByPrice() {
-        if (isPriceUp && !isPriceDown) {
+        if (isPriceUp && !isPriceDown) {            
             flightsData.sort((a, b) => {
                 return a.flight.price.total.amount - b.flight.price.total.amount;
             })
@@ -46,6 +65,7 @@ function Main() {
             flightsData.sort((a, b) => {
                 return a.flight.legs[0].duration - b.flight.legs[0].duration;
             })
+            
         }
         else {
             return filterFlights;
@@ -85,17 +105,17 @@ function Main() {
         if (isFilterByMinPrice && !isFilterByAnotherAirlines) {
             const filterFlights = flightsData.filter((item) => {
                 return item.flight.carrier.caption === minPrice.flight.carrier.caption;
-            })            
+            })
             setFilterFlights(filterFlights);
         }
         if (!isFilterByMinPrice && isFilterByAnotherAirlines) {
-            const filterFlights =  flightsData.filter((item) => {
+            const filterFlights = flightsData.filter((item) => {
                 return item.flight.carrier.caption === anotherMinPrice.flight.carrier.caption;
             })
             setFilterFlights(filterFlights);
         }
         if (isFilterByMinPrice && isFilterByAnotherAirlines) {
-            const filterFlights =  flightsData.filter((item) => {
+            const filterFlights = flightsData.filter((item) => {
                 return item.flight.carrier.caption === anotherMinPrice.flight.carrier.caption &&
                     item.flight.carrier.caption === minPrice.flight.carrier.caption;
             })
@@ -106,25 +126,16 @@ function Main() {
         }
     };
 
-    const handleChekPriceUp = (e) => {
+     const handleChekPriceUp = (e) => {
         setIsPriceUp(e.target.checked);
     };
 
-    /*     const handleChekPriceUp = () => {
-            if (isPriceUp) {
-                setIsPriceUp(false);
-            } else {
-                setIsPriceUp(true);
-            }
-          }; */
-
-    function handleChekPriceDown(event) {
-        setIsPriceDown(event.target.checked);
+    function handleChekPriceDown(e) {
+        setIsPriceDown(e.target.checked);
     };
 
     function checkedFilterByDuration(e) {
-        const isPriceDown = e.target.checked;
-        setIsFilterByDuration(isPriceDown);
+        setIsFilterByDuration(e.target.checked);
     };
 
     function checkedByTransfer(e) {
@@ -160,9 +171,6 @@ function Main() {
                 checkedPriceDown={handleChekPriceDown}
                 checkedFilterByDuration={checkedFilterByDuration}
 
-                sortFlightsByPrice={sortFlightsByPrice}
-                sortFlightsByDuration={sortFlightsByDuration}
-                filterFlightsByTransfer={filterFlightsByTransfer}
                 checkedByTransfer={checkedByTransfer}
                 checkedNoTransfer={checkedNoTransfer}
 
@@ -172,7 +180,6 @@ function Main() {
                 handleMaxPrice={handleMaxPrice}
                 onSearchFlights={searchByPrice}
 
-                filterByMinPrice={filterByMinPrice}
                 checkByMinPrice={checkByMinPrice}
                 checkByAnotherAirlines={checkByAnotherAirlines}
             />

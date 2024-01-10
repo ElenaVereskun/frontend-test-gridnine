@@ -1,7 +1,6 @@
 import { React } from 'react';
 
-function SearchMinPrice({    
-    filterByMinPrice,
+function SearchMinPrice({
     checkByMinPrice,
     checkByAnotherAirlines
 }) {
@@ -26,8 +25,7 @@ function SearchMinPrice({
             <h2 className='search-min-price__airlines-title'>Авиакомпании</h2>
             <div className='search-min-price__airlines-container'>
                 <input className='search-min-price__airlines-checkbox'
-                    onChange={checkByMinPrice}
-                    onClick={filterByMinPrice}
+                    onClick={checkByMinPrice}
                     type="checkbox" />
                 <input
                     className='search-min-price__airlines-text'
@@ -40,8 +38,7 @@ function SearchMinPrice({
             </div>
             <div className='search-min-price__airlines-container'>
                 <input className='search-min-price__airlines-checkbox'
-                    onChange={checkByAnotherAirlines}
-                    onClick={filterByMinPrice}
+                    onClick={checkByAnotherAirlines}
                     type="checkbox" />
                 <input
                     className='search-min-price__airlines-text'
