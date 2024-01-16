@@ -10,7 +10,8 @@
 
 .card-list__more {
     background-color: white;
-    border: 1px solid rgb(0, 140, 255);
+    border: 2px solid rgb(0, 140, 255);
     padding: 5px 40px 5px 40px;
-    width: 360px;    
+    width: 360px;
+    background-color:whitesmoke;  
 }

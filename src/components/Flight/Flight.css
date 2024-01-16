@@ -48,15 +48,16 @@
 
 .flight__stop {
     color: white;
+    background-color:whitesmoke;
 }
 
 .flight__stop_active {
+    background-color:whitesmoke;
     position: relative;
     z-index: 1;
     margin-bottom: -17px;
     text-align: center;
     color: rgb(253, 172, 66);
-    background-color: white;
     width: 110px;
 }
 

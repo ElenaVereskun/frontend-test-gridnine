@@ -1,5 +1,6 @@
 .search-min-price__airlines-checkbox{
     cursor: pointer;
+    background-color:whitesmoke;
 }
 .search-min-price__airlines-container{
     white-space: nowrap;
@@ -8,4 +9,7 @@
     white-space: nowrap;
     border: none;
     background-color: white;
+    background-color:whitesmoke;
+    max-width: 150px;
+    text-overflow:ellipsis;
 }

@@ -38,6 +38,7 @@
 .search-form__prise-item {
     display: flex;
     align-items: center;
+    background-color:whitesmoke;
 }
 
 .search-form__filter-title {

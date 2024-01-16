@@ -46,7 +46,7 @@ function SearchMinPrice({
                     type='text'
                     value={anotherMinPrice.flight.carrier.caption}
                     disabled />
-                <label className='search-min-price__min-price'>от
+                <label className='search-min-price__min-price'> от
                     {anotherMinPrice.flight.price.total.amount} p.</label>
             </div>
         </div>

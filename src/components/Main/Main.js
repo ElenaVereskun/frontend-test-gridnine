@@ -18,12 +18,11 @@ function Main() {
     //исходный массив оъектов
     const flights = FlightsData.result.flights;
     const flightsData = [...flights];
-    console.log(flightsData);
     localStorage.setItem("flightsData", JSON.stringify(flightsData));
 
     const [filterFlights, setFilterFlights] = useState(flightsData);
 
-     useEffect(() => {
+    useEffect(() => {
         setIsPriceUp();
         setIsPriceDown();
         sortFlightsByPrice();
@@ -47,14 +46,14 @@ function Main() {
     }, [isFilterByMinPrice, isFilterByAnotherAirlines]);
 
     function sortFlightsByPrice() {
-        if (isPriceUp && !isPriceDown) {            
-            const filtered =  flightsData.sort((a, b) => {
+        if (isPriceUp && !isPriceDown) {
+            const filtered = flightsData.sort((a, b) => {
                 return a.flight.price.total.amount - b.flight.price.total.amount;
             })
             setFilterFlights(filtered);
         }
         if (!isPriceUp && isPriceDown) {
-            const filtered =  flightsData.sort((a, b) => {
+            const filtered = flightsData.sort((a, b) => {
                 return b.flight.price.total.amount - a.flight.price.total.amount;
             })
             setFilterFlights(filtered);
@@ -130,7 +129,7 @@ function Main() {
         }
     };
 
-     const handleChekPriceUp = (e) => {
+    const handleChekPriceUp = (e) => {
         setIsPriceUp(e.target.checked);
     };
 
@@ -167,28 +166,31 @@ function Main() {
     };
 
     return (
-        <main className='main__container'>
-            <SearchForm
-                isPriceUp={isPriceUp}
-                isPriceDown={isPriceDown}
-                checkedPriceUp={handleChekPriceUp}
-                checkedPriceDown={handleChekPriceDown}
-                checkedFilterByDuration={checkedFilterByDuration}
+        <div className='main'>
+            <main className='main__container'>
+                <SearchForm
+                    isPriceUp={isPriceUp}
+                    isPriceDown={isPriceDown}
+                    checkedPriceUp={handleChekPriceUp}
+                    checkedPriceDown={handleChekPriceDown}
+                    checkedFilterByDuration={checkedFilterByDuration}
 
-                checkedByTransfer={checkedByTransfer}
-                checkedNoTransfer={checkedNoTransfer}
+                    checkedByTransfer={checkedByTransfer}
+                    checkedNoTransfer={checkedNoTransfer}
 
-                searchMinPrice={searchMinPriceValue}
-                handleMinPrice={handleMinPrice}
-                searchMaxPrice={searchMaxPriceValue}
-                handleMaxPrice={handleMaxPrice}
-                onSearchFlights={searchByPrice}
+                    searchMinPrice={searchMinPriceValue}
+                    handleMinPrice={handleMinPrice}
+                    searchMaxPrice={searchMaxPriceValue}
+                    handleMaxPrice={handleMaxPrice}
+                    onSearchFlights={searchByPrice}
 
-                checkByMinPrice={checkByMinPrice}
-                checkByAnotherAirlines={checkByAnotherAirlines}
-            />
-            <CardList flights={filterFlights} />
-        </main>
+                    checkByMinPrice={checkByMinPrice}
+                    checkByAnotherAirlines={checkByAnotherAirlines}
+                />
+                <CardList flights={filterFlights} />
+            </main >
+        </div>
+
     )
 }
 export default Main;
